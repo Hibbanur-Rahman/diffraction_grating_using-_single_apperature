@@ -1,0 +1,192 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+	int i,j;
+	struct arccoordstype arcinfo;
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+	for(i=1;i<=220;i++)
+	{      cleardevice();
+
+		circle(7,150,2);
+		setcolor(4);
+		outtextxy(50,380,"DIFFRACTION OF LIGHT WAVES THROUGH AN APERTURE");
+		setcolor(5);
+		outtextxy(1,154,"source");
+		setcolor(15);
+		if(i<=40)
+		{      // setcolor(5);
+			line(10+i,10,10+i,290);
+			line(10,10,10,290);
+		       //	line(50+i,10,50+i,290);
+		       //	line(90+i,10,90+i,290);
+			//line(130+i,10,130+i,290);
+		       //	line(170+i,10,170+i,290);
+		}
+		if(i>40&&i<=80)
+		{
+			line(10,10,10,290);
+			line(10+(i),10,10+(i),290);
+			line(10+(i-40),10,10+(i-40),290);
+		       //	line(90+(i-40),10,90+(i-40),290);
+		       //	line(130+(i-40),10,130+(i-40),290);
+		       //	line(170+(i-40),10,170+(i-40),290);
+		}
+		if(i>80&i<=120)
+		{
+			line(10,10,10,290);
+			line(10+(i),10,10+(i),290);
+			line(10+(i-40),10,10+(i-40),290);
+			line(10+(i-80),10,10+(i-80),290);
+		       //	line(130+(i-80),10,130+(i-80),290);
+		       //	line(170+(i-80),10,170+(i-80),290);
+		}
+		if(i>120&&i<=160)
+		{
+			line(10,10,10,290);
+			line(10+(i),10,10+(i),290);
+			line(10+(i-40),10,10+(i-40),290);
+			line(10+(i-80),10,10+(i-80),290);
+			line(10+(i-120),10,10+(i-120),290);
+		       //	line(170+(i-120),10,170+(i-120),290);
+		}
+		if(i>160&&i<=200)
+		{
+		       line(10+(i),10,10+(i),290);
+		       line(10,10,10,290);
+			line(10+(i-40),10,10+(i-40),290);
+			line(10+(i-80),10,10+(i-80),290);
+			line(10+(i-120),10,10+(i-120),290);
+			line(10+(i-160),10,10+(i-160),290);
+			line(10,10,10,290);
+		       if(i==200)
+		       {
+				arc(210,150,315,45,25);
+		       }
+		}
+		if(i>200&&i<=220)
+		{
+		for(j=1;j<=40;j++)
+		{        cleardevice();
+			setcolor(5);
+			outtextxy(1,154,"source");
+			//original direction line
+			line(140,130,200,130);
+			line(200,130,190,120);
+			line(200,130,190,140);
+			outtextxy(60,110,"original direction");
+			bar(210,10,230,130);
+			bar(210,170,230,290);
+			setcolor(15);
+			circle(7,150,2);
+			line(10,10,10,290);
+			line(10+j,10,10+j,290);
+			line(50+j,10,50+j,290);
+			line(90+j,10,90+j,290);
+			line(130+j,10,130+j,290);
+			line(170+j,10,170+j,290);
+			if(i==201&&j<=40)
+			{
+			       if(j<=20)
+				{
+				arc(210,150,315,45,45+j);
+				arc(210,150,315,45,25+j);
+				}
+				if(j>20)
+				arc(210,150,315,45,65+j);
+			}
+		       else if(i==202&&j<=40)
+			{
+				if(j<=20)
+				{
+				arc(210,150,315,45,45+j);
+				arc(210,150,315,45,25+j);
+				}
+				//arc(210,150,315,45,105+j);
+				arc(210,150,315,45,65+j);
+			}
+		       else if(i==203&&j<=40)
+			{
+				if(j<=20)
+				{
+				arc(210,150,315,45,45+j);
+				arc(210,150,315,45,25+j);
+				}
+			       //	arc(210,150,315,45,145+j);
+				arc(210,150,315,45,105+j);
+				arc(210,150,315,45,65+j);
+			}
+		       else if(i==204&&j<=40)
+			{       if(j<=20)
+				{
+				arc(210,150,315,45,45+j);
+				arc(210,150,315,45,25+j);
+				}
+				arc(210,150,315,45,145+j);
+				arc(210,150,315,45,105+j);
+				arc(210,150,315,45,65+j);
+			       //	arc(210,150,315,45,185+j);
+			}
+			else
+			{
+			       if(j<=20)
+				{
+				arc(210,150,315,45,45+j);
+				arc(210,150,315,45,25+j);
+				}
+				arc(210,150,315,45,185+j);
+				arc(210,150,315,45,145+j);
+				arc(210,150,315,45,105+j);
+				arc(210,150,315,45,65+j);
+			}
+			if(j>20)
+			{
+			arc(210,150,315,45,45);
+			arc(210,150,315,45,65);
+			}
+			arc(210,150,315,45,25);
+			if(i>204)
+			{
+				arc(210,150,315,45,105);
+				getarccoords(&arcinfo);
+				setcolor(5);
+				outtextxy(440,150,"screen");
+				 outtextxy(240,250,"Bending of waves");
+				 outtextxy(240,50,"Bending of waves");
+				line(240,110,arcinfo.xend+10,arcinfo.yend-20);
+				line(arcinfo.xend+10,arcinfo.yend-20,arcinfo.xend-15,arcinfo.yend-10);
+				line(arcinfo.xend+10,arcinfo.yend-20,arcinfo.xend-5,arcinfo.yend+10);
+				setcolor(15);
+				setcolor(5);
+				line(240,190,arcinfo.xstart+10,arcinfo.ystart+20);
+				line(arcinfo.xstart+10,arcinfo.ystart+20,arcinfo.xstart-5,arcinfo.ystart-5);
+				line(arcinfo.xstart+10,arcinfo.ystart+20,arcinfo.xstart-10,arcinfo.ystart+10);
+				setcolor(15);
+				line(435,10,435,290);
+				setcolor(2);
+				outtextxy(10,320,"'According to Definition,the bending of a wave or its deviation from the");
+				outtextxy(10,335,"original direction of propagation when it meets a small obstacle is");
+				outtextxy(10,350,"called DIFFRACTION'");
+				setcolor(4);
+				outtextxy(50,380,"DIFFRACTION OF LIGHT WAVES THROUGH AN APERTURE");
+				setcolor(15);
+			}
+			setcolor(4);
+			outtextxy(50,380,"DIFFRACTION OF LIGHT WAVES THROUGH AN APERTURE");
+			setcolor(15);
+			delay(20);
+		}
+		}
+		setcolor(4);
+		bar(210,10,230,130);
+		bar(210,170,230,290);
+		setcolor(111);
+
+
+		delay(20);
+	}
+	getch();
+}
